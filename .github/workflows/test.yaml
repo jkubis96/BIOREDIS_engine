@@ -1,0 +1,31 @@
+name: Push test
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'  
+
+      - name: Install requirements
+        run: |
+          pip install pytest
+          pip install -e .
+
+      - name: Run tests with pytest
+        run: |
+          pytest tests/test.py --maxfail=0 --disable-warnings -q 

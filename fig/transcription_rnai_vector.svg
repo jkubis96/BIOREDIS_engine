@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1463.613437pt" height="1127.416125pt" viewBox="0 0 1463.613437 1127.416125" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2023-11-30T13:06:20.139006</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 1127.416125 
+L 1463.613437 1127.416125 
+L 1463.613437 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 744.519323 252.51266 
+C 722.978313 252.51266 701.556384 255.713647 680.956303 262.01061 
+C 660.356221 268.307573 640.805746 277.630892 622.946248 289.674705 
+L 744.519323 469.95266 
+z
+" style="fill: #000ecd"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 610.233644 248.086295 
+C 571.538385 274.181009 542.254041 312.053489 526.736681 356.070175 
+C 511.219321 400.08686 510.278493 447.951382 524.054144 492.543854 
+C 537.829796 537.136325 565.603247 576.130338 603.243173 603.725501 
+C 640.883099 631.320664 686.42581 646.077327 733.09679 645.800423 
+L 731.806719 428.36425 
+z
+" style="fill: #00edff"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 721.997117 603.752791 
+C 740.297385 603.644213 758.510956 601.225737 776.205413 596.55478 
+C 793.899869 591.883823 810.934063 584.997645 826.903577 576.059734 
+L 720.707045 386.316618 
+z
+" style="fill: #00fd3f"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 838.00325 618.107367 
+C 865.740902 602.582997 889.739967 581.16355 908.30518 555.362073 
+C 926.870392 529.560595 939.554069 499.999266 945.460249 468.766264 
+C 951.366429 437.533262 950.352689 405.381743 942.490641 374.582854 
+C 934.628592 343.783965 920.10782 315.080393 899.954056 290.499727 
+L 731.806719 428.36425 
+z
+" style="fill: #74e800"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 876.015103 326.805824 
+C 862.151722 309.897265 845.816872 295.176128 827.56253 283.139862 
+C 809.308188 271.103596 789.342309 261.88932 768.33957 255.808396 
+L 707.867766 464.670347 
+z
+" style="fill: #dbff20"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 792.278522 219.502299 
+C 791.555651 219.293006 790.831698 219.087468 790.106693 218.885691 
+C 789.381687 218.683915 788.655639 218.485904 787.928578 218.291666 
+L 731.806719 428.36425 
+z
+" style="fill: #ffce05"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 776.766538 260.322786 
+C 776.662672 260.295038 776.558786 260.267366 776.454879 260.239772 
+C 776.350972 260.212178 776.247045 260.184661 776.143098 260.157221 
+L 720.644679 470.39537 
+z
+" style="fill: #ff3400"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 787.305138 218.126102 
+C 780.235208 216.25979 773.075635 214.751289 765.853715 213.60635 
+C 758.631794 212.461411 751.356714 211.681491 744.056211 211.269562 
+L 731.806719 428.36425 
+z
+" style="fill: #f107ff"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 744.056211 211.269562 
+C 742.016763 211.154487 739.975795 211.068156 737.933914 211.010596 
+C 735.892033 210.953035 733.849443 210.92425 731.806751 210.92425 
+L 731.806719 428.36425 
+z
+" style="fill: #ec84ef"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 731.806719 613.18825 
+C 780.822617 613.18825 827.837549 593.714028 862.497022 559.054554 
+C 897.156496 524.39508 916.630719 477.380148 916.630719 428.36425 
+C 916.630719 379.348352 897.156496 332.33342 862.497022 297.673946 
+C 827.837549 263.014473 780.822617 243.54025 731.806719 243.54025 
+C 682.790821 243.54025 635.775889 263.014473 601.116415 297.673946 
+C 566.456941 332.33342 546.982719 379.348352 546.982719 428.36425 
+C 546.982719 477.380148 566.456941 524.39508 601.116415 559.054554 
+C 635.775889 593.714028 682.790821 613.18825 731.806719 613.18825 
+z
+" clip-path="url(#pd1ead46bec)" style="stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 731.806719 602.31625 
+C 777.939328 602.31625 822.188676 583.98757 854.809358 551.366889 
+C 887.430039 518.746208 905.758719 474.49686 905.758719 428.36425 
+C 905.758719 382.231641 887.430039 337.982293 854.809358 305.361611 
+C 822.188676 272.74093 777.939328 254.41225 731.806719 254.41225 
+C 685.674109 254.41225 641.424761 272.74093 608.80408 305.361611 
+C 576.183399 337.982293 557.854719 382.231641 557.854719 428.36425 
+C 557.854719 474.49686 576.183399 518.746208 608.80408 551.366889 
+C 641.424761 583.98757 685.674109 602.31625 731.806719 602.31625 
+z
+" clip-path="url(#pd1ead46bec)" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_13">
+    <path d="M 372.230787 510.420603 
+Q 447.440467 505.638253 520.981162 493.070422 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+    <path d="M 512.42167 490.475216 
+L 520.981162 493.070422 
+L 513.769302 498.360892 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 700 20px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="368.239714" y="518.215695" transform="rotate(-0 368.239714 518.215695)">Resistance : Ampicillin</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 1101.709847 468.895064 
+Q 1024.7211 462.903823 948.567255 468.534592 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+    <path d="M 956.840429 471.933798 
+L 948.567255 468.534592 
+L 956.250524 463.955577 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font: 700 20px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="1105.700396" y="478.866767" transform="rotate(-0 1105.700396 478.866767)">pUC_ori</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 1101.698073 192.022769 
+Q 945.790635 191.180828 793.176027 218.338336 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+    <path d="M 801.75308 220.874902 
+L 793.176027 218.338336 
+L 800.351511 212.998634 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font: 700 20px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="1105.700396" y="197.937835" transform="rotate(-0 1105.700396 197.937835)">SapI</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 1136.350345 131.064687 
+Q 949.149881 157.546079 768.834139 212.693961 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+    <path d="M 777.654214 214.179319 
+L 768.834139 212.693961 
+L 775.314471 206.529116 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font: 700 20px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="1105.700396" y="124.069134" transform="rotate(-0 1105.700396 124.069134)">RNAi : KIT_RNAi_113_hs</text>
+   </g>
+   <g id="patch_17">
+    <path d="M 1101.800212 51.412462 
+Q 913.269496 113.481458 740.65957 209.4934 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+    <path d="M 749.595197 209.100237 
+L 740.65957 209.4934 
+L 745.706416 202.109001 
+" style="fill: none; stroke: #808080; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font: 700 20px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="1105.700396" y="51.196875" transform="rotate(-0 1105.700396 51.196875)">T7</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_18">
+     <path d="M 585.233438 484.848906 
+L 878.38 484.848906 
+L 878.38 371.707719 
+L 585.233438 371.707719 
+z
+" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter"/>
+    </g>
+    <text style="font: 700 22px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(631.002031 397.396156)">Regular plasmid</text>
+    <text style="font: 700 22px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(707.3575 422.203219)">rnai</text>
+    <text style="font: 700 22px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(594.033438 446.838406)"> Plasmid size: 2118nc </text>
+    <text style="font: 700 22px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(610.160469 471.473594)"> Insert size: 2118nc</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_19">
+     <path d="M 27.2 1100.216125 
+L 1436.413437 1100.216125 
+L 1436.413437 1061.152375 
+L 27.2 1061.152375 
+z
+" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter"/>
+    </g>
+    <text style="fill: #008000; font: 700 22px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="731.806719" y="1086.668938" transform="rotate(-0 731.806719 1086.668938)">The insert sequence of the vector is optimal for this vector type. The optimal insert for this vector is &lt; 25000nc</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd1ead46bec">
+   <rect x="460.006719" y="156.56425" width="543.6" height="543.6"/>
+  </clipPath>
+ </defs>
+</svg>
