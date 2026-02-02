@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-VERSION = '2.1.1' 
+VERSION = '2.1.3' 
 DESCRIPTION = 'jbioseqtools'
 LONG_DESCRIPTION = Path("README.md").read_text(encoding="utf-8")
 
@@ -26,7 +26,7 @@ setup(
             "Operating System :: Microsoft :: Windows",
             "Operating System :: POSIX :: Linux",
         ],
-        python_requires='>=3.8',
+        python_requires=">=3.8,<3.11",
 )
 
 
