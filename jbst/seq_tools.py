@@ -201,7 +201,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = fetch_refseq_sequences(accession_numbers)
                 refseq_sequences = sequences_decode(refseq_sequences)
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -239,7 +239,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = fetch_refseq_sequences(accession_numbers)
                 refseq_sequences = sequences_decode(refseq_sequences)
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -270,7 +270,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = fetch_refseq_sequences(accession_numbers)
                 refseq_sequences = sequences_decode(refseq_sequences)
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -308,7 +308,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = sequences_decode(refseq_sequences)
 
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -346,7 +346,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = sequences_decode(refseq_sequences)
 
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -388,7 +388,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = sequences_decode(refseq_sequences)
 
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -419,7 +419,7 @@ def get_sequences_gene(gene_name: str, species: str = "human", max_results: int 
                 refseq_sequences = fetch_refseq_sequences(accession_numbers)
                 refseq_sequences = sequences_decode(refseq_sequences)
                 refseq_sequences["gene_name"] = [
-                    re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+                    re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
                     for x in refseq_sequences["name"]
                 ]
                 if len(refseq_sequences["sequences"]) > 0:
@@ -476,7 +476,7 @@ def get_sequences_accesion(accesion_list: list):
         refseq_sequences = fetch_refseq_sequences(accesion_list)
         refseq_sequences = sequences_decode(refseq_sequences)
         refseq_sequences["gene_name"] = [
-            re.sub("\).*", "", re.sub(".*\(", "", x)).upper()
+            re.sub(r"\).*", "", re.sub(r".*\(", "", x)).upper()
             for x in refseq_sequences["name"]
         ]
         if len(refseq_sequences["sequences"]) > 0:
@@ -2809,8 +2809,8 @@ def codon_otymization(
                     df[0, i] = tmp_2["Triplet"][0]
                     df[1, i] = tmp_2["GC_content"][0]
                     m += int(tmp_2["GC_content"][0])
-                elif diff1 == 1000 & diff2 == 1000:
-                    next
+                elif diff1 == 1000 and diff2 == 1000:
+                    continue
             else:
                 m += int(df[1, i])
 
@@ -2871,7 +2871,7 @@ def codon_otymization(
                     break
                 else:
                     overlapping_df = None
-                    skip_list.append(int(external_start), int(external_end))
+                    skip_list.append((int(external_start), int(external_end)))
 
             if isinstance(overlapping_df, pd.DataFrame):
                 overlapping_df["new_triplets"] = None

@@ -1443,7 +1443,7 @@ def eval_vector(project, vectors, vector_type, vector_function, **args):
         None
 
     try:
-        data_elements["sequence"].append(str(project["rnai"]["sequence"]))
+        data_elements["sequence"].append(str(project["rnai"]["full_sequence"]))
         data_elements["element"].append(str("RNAi"))
         data_elements["name"].append(str(project["rnai"]["name"]))
 
