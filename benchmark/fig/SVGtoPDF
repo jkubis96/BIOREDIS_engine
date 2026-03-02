@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# List all SVG files in the current directory
+list=$(ls -1 *.svg 2>/dev/null)
+
+# Check if any SVG files were found
+if [ -z "$list" ]; then
+    echo "No SVG files found in the current directory."
+    exit 1
+fi
+
+# Loop through the list and convert each SVG file to PDF
+for svg_file in $list; do
+    base_name=$(basename "$svg_file" .svg)
+    pdf_file="$base_name.pdf"
+
+    # Check if rsvg-convert is available in the PATH
+    if command -v rsvg-convert >/dev/null; then
+        rsvg-convert -f pdf -o "$pdf_file" "$svg_file"
+        echo "Converted $svg_file to $pdf_file"
+    else
+        echo "rsvg-convert not found in the PATH. Please install it."
+        exit 1
+    fi
+done
+
+echo "Conversion complete."

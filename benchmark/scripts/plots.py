@@ -63,7 +63,7 @@ sns.stripplot(x='source', y='GC%', data=outside_df, color='red',
 plt.axhline(30, color='red', linestyle='--', label='30%')
 plt.axhline(60, color='blue', linestyle='--', label='60%')
 
-plt.title('GC% - KIT', fontsize=13)
+plt.title('GC% - $\it{KIT}$', fontsize=13)
 plt.xlabel('Tool')
 plt.ylabel('GC (%)')
 plt.xticks(rotation=30, ha="right")
@@ -76,7 +76,7 @@ fig.savefig('fig/KIT_GC.svg', dpi = 300)
 
 fig = plt.figure(figsize=(10, 6))
 sns.boxplot(x='source', y='score', data=df, palette='Set2')
-plt.title('Score - KIT')
+plt.title('Score - $\it{KIT}$')
 plt.xlabel('Tool')
 plt.ylabel('Score')
 plt.xticks(rotation=30, ha="right")
@@ -110,7 +110,7 @@ df['complemenatry_pct_percent'] = df['complemenatry_pct'] * 100
 
 fig = plt.figure(figsize=(10, 6))
 sns.boxplot(x='source', y='complemenatry_count', data=df, palette='Set2')
-plt.title('Self-complementary regions in siRNA - KIT')
+plt.title('Self-complementary regions in siRNA - $\it{KIT}$')
 plt.xlabel('Tool')
 plt.ylabel('Count')
 plt.xticks(rotation=30, ha="right")
@@ -149,7 +149,7 @@ sns.scatterplot(
 plt.axvline(30, color='red', linestyle='--', label='Lower GC threshold')
 plt.axvline(60, color='blue', linestyle='--', label='Upper GC threshold')
 
-plt.title('Top detected siRNA [score ~ GC%] - KIT', fontsize=13)
+plt.title('Top detected siRNA [score ~ GC%] - $\it{KIT}$', fontsize=13)
 plt.xlabel('GC (%)')
 plt.ylabel('Score')
 
@@ -179,7 +179,7 @@ sns.scatterplot(
 )
 
 
-plt.title('Top detected siRNA [score ~ self-complemenatry %] - KIT', fontsize=13)
+plt.title('Top detected siRNA [score ~ self-complemenatry %] - $\it{KIT}$', fontsize=13)
 plt.xlabel('Self-complementary (%)')
 plt.ylabel('Score')
 
@@ -225,7 +225,7 @@ sns.stripplot(x='source', y='GC%', data=outside_df, color='red',
 plt.axhline(30, color='red', linestyle='--', label='30%')
 plt.axhline(60, color='blue', linestyle='--', label='60%')
 
-plt.title('GC% - PAX3', fontsize=13)
+plt.title('GC% - $\it{PAX3}$', fontsize=13)
 plt.xlabel('Tool')
 plt.ylabel('GC (%)')
 plt.xticks(rotation=30, ha="right")
@@ -238,7 +238,7 @@ fig.savefig('fig/PAX3_GC.svg', dpi = 300)
 
 fig = plt.figure(figsize=(10, 6))
 sns.boxplot(x='source', y='score', data=df, palette='Set2')
-plt.title('Score - PAX3')
+plt.title('Score - $\it{PAX3}$')
 plt.xlabel('Tool')
 plt.ylabel('Score')
 plt.xticks(rotation=30, ha="right")
@@ -274,7 +274,7 @@ df['complemenatry_pct_percent'] = df['complemenatry_pct'] * 100
 
 fig = plt.figure(figsize=(10, 6))
 sns.boxplot(x='source', y='complemenatry_count', data=df, palette='Set2')
-plt.title('Self-complementary regions in siRNA - PAX3')
+plt.title('Self-complementary regions in siRNA - $\it{PAX3}$')
 plt.xlabel('Tool')
 plt.ylabel('Count')
 plt.xticks(rotation=30, ha="right")
@@ -299,7 +299,7 @@ sns.scatterplot(data=max_score_df, x='GC%', y='score', hue='source', s=150, edge
 plt.axvline(30, color='red', linestyle='--', label='Lower GC threshold')
 plt.axvline(60, color='blue', linestyle='--', label='Upper GC threshold')
 
-plt.title('Top detected siRNA [score ~ GC%] - PAX3', fontsize=13)
+plt.title('Top detected siRNA [score ~ GC%] - $\it{PAX3}$', fontsize=13)
 plt.xlabel('GC (%)')
 plt.ylabel('Score')
 
@@ -318,7 +318,7 @@ fig.savefig('fig/PAX3_score~gc.svg', dpi = 300)
 fig = plt.figure(figsize=(8, 6))
 sns.scatterplot(data=max_score_df, x='complemenatry_pct_percent', y='score', hue='source', s=150, edgecolor='black')
 
-plt.title('Top detected siRNA [score ~ self-complemenatry %] - PAX3', fontsize=13)
+plt.title('Top detected siRNA [score ~ self-complemenatry %] - $\it{PAX3}$', fontsize=13)
 plt.xlabel('Self-complementary (%)')
 plt.ylabel('Score')
 
@@ -355,7 +355,7 @@ for gene in genes:
     fig = plt.figure(figsize=(10,6))
     sns.barplot(x="tool", y="GC", data=sub, palette="Set2", ci="sd", edgecolor="black")
     sns.stripplot(x="tool", y="GC", data=sub, color="black", size=6, jitter=True)
-    plt.title(f"{gene} - GC%")
+    plt.title(rf"$\it{{{gene}}}$ - GC%")
     plt.ylabel("GC [%]")
     plt.xlabel("Sequence/Tool")
     plt.xticks(rotation=30, ha="right")
@@ -368,7 +368,7 @@ for gene in genes:
     fig = plt.figure(figsize=(10,6))
     sns.barplot(x="tool", y="freq", data=sub, palette="Set2", ci="sd", edgecolor="black")
     sns.stripplot(x="tool", y="freq", data=sub, color="black", size=6, jitter=True)
-    plt.title(f"{gene} - Codon Frequency")
+    plt.title(rf"$\it{{{gene}}}$ - Codon Frequency")
     plt.ylabel("Codon Frequency")
     plt.xlabel("Sequence/Tool")
     plt.xticks(rotation=30, ha="right")
@@ -381,7 +381,7 @@ for gene in genes:
     fig = plt.figure(figsize=(10,6))
     sns.barplot(x="tool", y="changed_bases %", data=sub, palette="Set2", ci="sd", edgecolor="black")
     sns.stripplot(x="tool", y="changed_bases %", data=sub, color="black", size=6, jitter=True)
-    plt.title(f"{gene} - Changed bases")
+    plt.title(rf"$\it{{{gene}}}$ - Changed bases")
     plt.ylabel("Changed bases [%]")
     plt.xlabel("Sequence/Tool")
     plt.xticks(rotation=30, ha="right")
@@ -394,7 +394,7 @@ for gene in genes:
     fig = plt.figure(figsize=(10,6))
     sns.barplot(x="tool", y="changed_codons %", data=sub, palette="Set2", ci="sd", edgecolor="black")
     sns.stripplot(x="tool", y="changed_codons %", data=sub, color="black", size=6, jitter=True)
-    plt.title(f"{gene} - Changed codons")
+    plt.title(rf"$\it{{{gene}}}$ - Changed codons")
     plt.ylabel("Changed codons [%]")
     plt.xlabel("Sequence/Tool")
     plt.xticks(rotation=30, ha="right")
@@ -407,7 +407,7 @@ for gene in genes:
     fig = plt.figure(figsize=(10,6))
     sns.barplot(x="tool", y="MFE [kcal/mol]", data=sub, palette="Set2", ci="sd", edgecolor="black")
     sns.stripplot(x="tool", y="MFE [kcal/mol]", data=sub, color="black", size=6, jitter=True)
-    plt.title(f"{gene} - Minimum Free Energy (MFE)")
+    plt.title(rf"$\it{{{gene}}}$ - Minimum Free Energy (MFE)")
     plt.ylabel("MFE [kcal/mol]")
     plt.xlabel("Sequence/Tool")
     plt.xticks(rotation=30, ha="right")
@@ -424,7 +424,7 @@ for gene in genes:
         hue="tool", s=150, palette="coolwarm", edgecolor="black"
     )
     
-    plt.title(f"{gene} — GC% ~ MFE", fontsize=16)
+    plt.title(rf"$\it{{{gene}}}$ — GC% ~ MFE", fontsize=16)
     plt.xlabel("GC [%]", fontsize=14)
     plt.ylabel("MFE [kcal/mol]", fontsize=14)
     
@@ -455,7 +455,7 @@ for gene in genes:
     fig = plt.figure(figsize=(10,6))
     sns.barplot(x="tool", y="ΔMFE", data=delta[delta.index == gene], palette="rocket", edgecolor="black")
     plt.axhline(0, color="gray", linestyle="--")
-    plt.title(f"{gene} - Change in MFE relative to the native sequence")
+    plt.title(rf"$\it{{{gene}}}$ - Change in MFE relative to the native sequence")
     plt.ylabel("ΔMFE [kcal/mol]")
     plt.xticks(rotation=30, ha="right")
     plt.tight_layout()
@@ -494,7 +494,7 @@ for gene in genes:
         cbar_kws={'label': 'max_count'},
         linewidths=1, linecolor="white"
     )
-    plt.title(f"{gene} - Max repeat tract of G/A/C/T", fontsize=16)
+    plt.title(rf"$\it{{{gene}}}$ - Max repeat tract of G/A/C/T", fontsize=16)
     plt.xlabel("")
     plt.ylabel("Sequence/Tool")
     plt.tight_layout()

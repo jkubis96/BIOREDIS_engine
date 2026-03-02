@@ -1,0 +1,245 @@
+---
+title: "**Supplementary Information**"
+subtitle: "BIOREDIS: rapid and customizable design of nucleic acid therapeutics"
+output: pdf_document
+---
+
+\
+
+
+
+```{r include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+
+data <- readxl::read_excel('optimization_results.xlsx')
+
+
+```
+
+
+```{r include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+
+
+data2_KIT <- readxl::read_excel('mutual_KIT.xlsx')
+data2_PAX <- readxl::read_excel('mutual_PAX3.xlsx')
+
+
+```
+
+
+# Supplementary Tables
+
+
+## Codons optimisation
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+library(tidyverse)
+
+df <- data[,c('tool','gene', 'GC', 'freq', 'changed_bases %' , 'changed_codons %', 'MFE [kcal/mol]')]
+
+knitr::kable(df)
+
+
+```
+
+**Table S1:** Data including statistics of the native sequences (*KIT, PAX3*) and optimized sequences generated using various tools.
+
+
+\
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+library(tidyverse)
+
+df <- data2_KIT[,c('source', 
+                   'RNAi_seq', 
+                   'specificity', 
+                   'GC%', 
+                   'score')]
+
+knitr::kable(df)
+
+```
+
+**Table S2:** Data including statistics of the predicted RNAi of *KIT* gene using various tools.
+
+ \newpage
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+library(tidyverse)
+
+df <- data2_PAX[,c('source', 
+                   'RNAi_seq', 
+                   'specificity', 
+                   'GC%', 
+                   'score')]
+
+knitr::kable(df)
+
+
+```
+
+**Table S3:** Data including statistics of the predicted RNAi of *PAX3* gene using various tools.
+
+
+
+\newpage
+
+
+
+# Supplementary Figures
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.1-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.1-PAX3.pdf")
+
+
+```
+
+
+**Figure S1.** Percent of nucleotide changes in optimised sequences relative to the native sequence of the *KIT* and *PAX3* genes.
+
+\newpage
+
+
+
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.2-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.2-PAX3.pdf")
+
+```
+
+
+**Figure S2.** Percent of codon changes in optimised sequences relative to the native sequence of the *KIT* and *PAX3* genes.
+
+\newpage
+
+
+
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.3-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.3-PAX3.pdf")
+
+
+```
+
+
+**Figure S3.** Codon frequency values in optimised and native sequences of the *KIT* and *PAX3* genes
+
+\newpage
+
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.4-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.4-PAX3.pdf")
+
+
+```
+
+
+**Figure S4.** GC content [%] in optimised and native sequences of the *KIT* and *PAX3* genes
+
+\newpage
+
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+
+knitr::include_graphics("supplemetary_figures/Supp.Fig.5-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.5-PAX3.pdf")
+
+
+```
+
+
+**Figure S5.** MFE [Minimum Free Energy] values in optimised and native sequences of the *KIT* and *PAX3* genes
+
+\newpage
+
+
+
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+
+knitr::include_graphics("supplemetary_figures/Supp.Fig.6-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.6-PAX3.pdf")
+
+
+```
+
+**Figure S6.**  Heatmap of longest consecutive A/C/T/G tracts in optimised sequences of the *KIT* and *PAX3* genes.
+
+\newpage
+
+
+
+
+## RNAi (siRNA/shRNA) prediction
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.7-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.7-PAX3.pdf")
+
+
+```
+
+**Figure S7.** Counts of self-complementary regions in predicted RNAi sequences targeting the *KIT* and *PAX3* genes.
+
+
+
+\newpage
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.8-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.8-PAX3.pdf")
+
+
+```
+
+
+
+**Figure S8.** GC content [%] in predicted RNAi sequences targeting the *KIT* and *PAX3* genes.
+
+
+\newpage
+
+
+
+
+```{r out.width="80%", fig.align='center', include=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_graphics("supplemetary_figures/Supp.Fig.9-KIT.pdf")
+knitr::include_graphics("supplemetary_figures/Supp.Fig.9-PAX3.pdf")
+
+
+```
+
+
+**Figure S9.** Nucleotide positions score in predicted RNAi sequences targeting the *KIT* and *PAX3* genes based on series of publications: DOI:10.1093/nar/gkn902; DOI:10.1093/nar/gkh247; DOI:10.1038/nbt936;; DOI:10.1016/j.bbrc.2004.02.157
+
+
+
+
+<!--
+rmarkdown::render("supplementary.Rmd",
+                  output_format = "pdf_document",
+                  output_file = "supplementary.tex",
+                  clean = FALSE)
+-->
