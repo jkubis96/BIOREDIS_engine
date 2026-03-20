@@ -2376,6 +2376,11 @@ def create_vector_from_dict_transcription(
                 else:
                     transcript_rep = int(input_dict["poly_len"])
 
+                if "predict_mrna" not in input_dict.keys():
+                    pmrna = False
+                else:
+                    pmrna = bool(input_dict["predict_mrna"])
+
                 project = sequence_enrichment(
                     project,
                     metadata,
@@ -2483,45 +2488,16 @@ def create_vector_from_dict_transcription(
 
                         ###################
 
-                project["transcripts"]["sequences"]["sequence_figure"] = []
-                project["transcripts"]["sequences"]["sequence_dot"] = []
-
-                for tn in range(
-                    0, len(project["transcripts"]["sequences"]["sequence"])
-                ):
-                    figure, dot = predict_structure(
-                        dna_to_rna(
-                            project["transcripts"]["sequences"]["sequence"][tn],
-                            enrichment=False,
-                        ),
-                        anty_sequence="",
-                        height=None,
-                        width=None,
-                        dis_alpha=0.1,
-                        seq_force=27,
-                        pair_force=3,
-                        show_plot=show_plot,
-                    )
-
-                    project["transcripts"]["sequences"]["sequence_figure"].append(
-                        figure
-                    )
-                    project["transcripts"]["sequences"]["sequence_dot"].append(dot)
-
-                if run1:
-                    project["transcripts"]["sequences"][
-                        "optimized_sequence_figure"
-                    ] = []
-                    project["transcripts"]["sequences"]["optimized_sequence_dot"] = []
+                if pmrna:
+                    project["transcripts"]["sequences"]["sequence_figure"] = []
+                    project["transcripts"]["sequences"]["sequence_dot"] = []
 
                     for tn in range(
-                        0, len(project["transcripts"]["sequences"]["vector_sequence"])
+                        0, len(project["transcripts"]["sequences"]["sequence"])
                     ):
                         figure, dot = predict_structure(
                             dna_to_rna(
-                                project["transcripts"]["sequences"]["vector_sequence"][
-                                    tn
-                                ],
+                                project["transcripts"]["sequences"]["sequence"][tn],
                                 enrichment=False,
                             ),
                             anty_sequence="",
@@ -2533,12 +2509,45 @@ def create_vector_from_dict_transcription(
                             show_plot=show_plot,
                         )
 
+                        project["transcripts"]["sequences"]["sequence_figure"].append(
+                            figure
+                        )
+                        project["transcripts"]["sequences"]["sequence_dot"].append(dot)
+
+                    if run1:
                         project["transcripts"]["sequences"][
                             "optimized_sequence_figure"
-                        ].append(figure)
+                        ] = []
                         project["transcripts"]["sequences"][
                             "optimized_sequence_dot"
-                        ].append(dot)
+                        ] = []
+
+                        for tn in range(
+                            0,
+                            len(project["transcripts"]["sequences"]["vector_sequence"]),
+                        ):
+                            figure, dot = predict_structure(
+                                dna_to_rna(
+                                    project["transcripts"]["sequences"][
+                                        "vector_sequence"
+                                    ][tn],
+                                    enrichment=False,
+                                ),
+                                anty_sequence="",
+                                height=None,
+                                width=None,
+                                dis_alpha=0.1,
+                                seq_force=27,
+                                pair_force=3,
+                                show_plot=show_plot,
+                            )
+
+                            project["transcripts"]["sequences"][
+                                "optimized_sequence_figure"
+                            ].append(figure)
+                            project["transcripts"]["sequences"][
+                                "optimized_sequence_dot"
+                            ].append(dot)
 
                 project = vector_string(
                     project,
@@ -3301,6 +3310,11 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                 else:
                     transcript_rep = int(input_dict["poly_len"])
 
+                if "predict_mrna" not in input_dict.keys():
+                    pmrna = False
+                else:
+                    pmrna = bool(input_dict["predict_mrna"])
+
                 if len(project["transcripts"]["sequences"]["sequence"]) > 0:
                     project = sequence_enrichment(
                         project,
@@ -3403,48 +3417,17 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                             )
 
                     ###################
-                    project["transcripts"]["sequences"]["sequence_figure"] = []
-                    project["transcripts"]["sequences"]["sequence_dot"] = []
 
-                    for tn in range(
-                        0, len(project["transcripts"]["sequences"]["sequence"])
-                    ):
-                        figure, dot = predict_structure(
-                            dna_to_rna(
-                                project["transcripts"]["sequences"]["sequence"][tn],
-                                enrichment=False,
-                            ),
-                            anty_sequence="",
-                            height=None,
-                            width=None,
-                            dis_alpha=0.1,
-                            seq_force=27,
-                            pair_force=3,
-                            show_plot=show_plot,
-                        )
-
-                        project["transcripts"]["sequences"]["sequence_figure"].append(
-                            figure
-                        )
-                        project["transcripts"]["sequences"]["sequence_dot"].append(dot)
-
-                    if run1:
-                        project["transcripts"]["sequences"][
-                            "optimized_sequence_figure"
-                        ] = []
-                        project["transcripts"]["sequences"][
-                            "optimized_sequence_dot"
-                        ] = []
+                    if pmrna:
+                        project["transcripts"]["sequences"]["sequence_figure"] = []
+                        project["transcripts"]["sequences"]["sequence_dot"] = []
 
                         for tn in range(
-                            0,
-                            len(project["transcripts"]["sequences"]["vector_sequence"]),
+                            0, len(project["transcripts"]["sequences"]["sequence"])
                         ):
                             figure, dot = predict_structure(
                                 dna_to_rna(
-                                    project["transcripts"]["sequences"][
-                                        "vector_sequence"
-                                    ][tn],
+                                    project["transcripts"]["sequences"]["sequence"][tn],
                                     enrichment=False,
                                 ),
                                 anty_sequence="",
@@ -3457,11 +3440,50 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                             )
 
                             project["transcripts"]["sequences"][
-                                "optimized_sequence_figure"
+                                "sequence_figure"
                             ].append(figure)
+                            project["transcripts"]["sequences"]["sequence_dot"].append(
+                                dot
+                            )
+
+                        if run1:
+                            project["transcripts"]["sequences"][
+                                "optimized_sequence_figure"
+                            ] = []
                             project["transcripts"]["sequences"][
                                 "optimized_sequence_dot"
-                            ].append(dot)
+                            ] = []
+
+                            for tn in range(
+                                0,
+                                len(
+                                    project["transcripts"]["sequences"][
+                                        "vector_sequence"
+                                    ]
+                                ),
+                            ):
+                                figure, dot = predict_structure(
+                                    dna_to_rna(
+                                        project["transcripts"]["sequences"][
+                                            "vector_sequence"
+                                        ][tn],
+                                        enrichment=False,
+                                    ),
+                                    anty_sequence="",
+                                    height=None,
+                                    width=None,
+                                    dis_alpha=0.1,
+                                    seq_force=27,
+                                    pair_force=3,
+                                    show_plot=show_plot,
+                                )
+
+                                project["transcripts"]["sequences"][
+                                    "optimized_sequence_figure"
+                                ].append(figure)
+                                project["transcripts"]["sequences"][
+                                    "optimized_sequence_dot"
+                                ].append(dot)
 
                 project = vector_string(
                     project,
@@ -3646,6 +3668,11 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                             else:
                                 transcript_rep = int(input_dict["poly_len"])
 
+                            if "predict_mrna" not in input_dict.keys():
+                                pmrna = False
+                            else:
+                                pmrna = bool(input_dict["predict_mrna"])
+
                             if len(project["transcripts"]["sequences"]["sequence"]) > 0:
                                 project = sequence_enrichment(
                                     project,
@@ -3773,60 +3800,26 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                                             project, metadata, input_dict["species"]
                                         )
 
-                                project["transcripts"]["sequences"][
-                                    "sequence_figure"
-                                ] = []
-                                project["transcripts"]["sequences"]["sequence_dot"] = []
-
-                                for tn in range(
-                                    0,
-                                    len(
-                                        project["transcripts"]["sequences"]["sequence"]
-                                    ),
-                                ):
-                                    figure, dot = predict_structure(
-                                        dna_to_rna(
-                                            project["transcripts"]["sequences"][
-                                                "sequence"
-                                            ][tn],
-                                            enrichment=False,
-                                        ),
-                                        anty_sequence="",
-                                        height=None,
-                                        width=None,
-                                        dis_alpha=0.1,
-                                        seq_force=27,
-                                        pair_force=3,
-                                        show_plot=show_plot,
-                                    )
-
+                                if pmrna:
                                     project["transcripts"]["sequences"][
                                         "sequence_figure"
-                                    ].append(figure)
-                                    project["transcripts"]["sequences"][
-                                        "sequence_dot"
-                                    ].append(dot)
-
-                                if run1:
-                                    project["transcripts"]["sequences"][
-                                        "optimized_sequence_figure"
                                     ] = []
                                     project["transcripts"]["sequences"][
-                                        "optimized_sequence_dot"
+                                        "sequence_dot"
                                     ] = []
 
                                     for tn in range(
                                         0,
                                         len(
                                             project["transcripts"]["sequences"][
-                                                "vector_sequence"
+                                                "sequence"
                                             ]
                                         ),
                                     ):
                                         figure, dot = predict_structure(
                                             dna_to_rna(
                                                 project["transcripts"]["sequences"][
-                                                    "vector_sequence"
+                                                    "sequence"
                                                 ][tn],
                                                 enrichment=False,
                                             ),
@@ -3840,11 +3833,50 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                                         )
 
                                         project["transcripts"]["sequences"][
-                                            "optimized_sequence_figure"
+                                            "sequence_figure"
                                         ].append(figure)
                                         project["transcripts"]["sequences"][
-                                            "optimized_sequence_dot"
+                                            "sequence_dot"
                                         ].append(dot)
+
+                                    if run1:
+                                        project["transcripts"]["sequences"][
+                                            "optimized_sequence_figure"
+                                        ] = []
+                                        project["transcripts"]["sequences"][
+                                            "optimized_sequence_dot"
+                                        ] = []
+
+                                        for tn in range(
+                                            0,
+                                            len(
+                                                project["transcripts"]["sequences"][
+                                                    "vector_sequence"
+                                                ]
+                                            ),
+                                        ):
+                                            figure, dot = predict_structure(
+                                                dna_to_rna(
+                                                    project["transcripts"]["sequences"][
+                                                        "vector_sequence"
+                                                    ][tn],
+                                                    enrichment=False,
+                                                ),
+                                                anty_sequence="",
+                                                height=None,
+                                                width=None,
+                                                dis_alpha=0.1,
+                                                seq_force=27,
+                                                pair_force=3,
+                                                show_plot=show_plot,
+                                            )
+
+                                            project["transcripts"]["sequences"][
+                                                "optimized_sequence_figure"
+                                            ].append(figure)
+                                            project["transcripts"]["sequences"][
+                                                "optimized_sequence_dot"
+                                            ].append(dot)
 
                             project = vector_string(
                                 project,
@@ -4282,6 +4314,11 @@ def create_vector_from_dict_expression(metadata, input_dict, show_plot=True):
                 else:
                     transcript_rep = int(input_dict["poly_len"])
 
+                if "predict_mrna" not in input_dict.keys():
+                    pmrna = False
+                else:
+                    pmrna = bool(input_dict["predict_mrna"])
+
                 project = sequence_enrichment(
                     project,
                     metadata,
@@ -4378,37 +4415,16 @@ def create_vector_from_dict_expression(metadata, input_dict, show_plot=True):
                             project, metadata, input_dict["species"]
                         )
 
-            project["transcripts"]["sequences"]["sequence_figure"] = []
-            project["transcripts"]["sequences"]["sequence_dot"] = []
-
-            for tn in range(0, len(project["transcripts"]["sequences"]["sequence"])):
-                figure, dot = predict_structure(
-                    dna_to_rna(
-                        project["transcripts"]["sequences"]["sequence"][tn],
-                        enrichment=False,
-                    ),
-                    anty_sequence="",
-                    height=None,
-                    width=None,
-                    dis_alpha=0.1,
-                    seq_force=27,
-                    pair_force=3,
-                    show_plot=show_plot,
-                )
-
-                project["transcripts"]["sequences"]["sequence_figure"].append(figure)
-                project["transcripts"]["sequences"]["sequence_dot"].append(dot)
-
-            if run1:
-                project["transcripts"]["sequences"]["optimized_sequence_figure"] = []
-                project["transcripts"]["sequences"]["optimized_sequence_dot"] = []
+            if pmrna:
+                project["transcripts"]["sequences"]["sequence_figure"] = []
+                project["transcripts"]["sequences"]["sequence_dot"] = []
 
                 for tn in range(
-                    0, len(project["transcripts"]["sequences"]["vector_sequence"])
+                    0, len(project["transcripts"]["sequences"]["sequence"])
                 ):
                     figure, dot = predict_structure(
                         dna_to_rna(
-                            project["transcripts"]["sequences"]["vector_sequence"][tn],
+                            project["transcripts"]["sequences"]["sequence"][tn],
                             enrichment=False,
                         ),
                         anty_sequence="",
@@ -4420,12 +4436,42 @@ def create_vector_from_dict_expression(metadata, input_dict, show_plot=True):
                         show_plot=show_plot,
                     )
 
+                    project["transcripts"]["sequences"]["sequence_figure"].append(
+                        figure
+                    )
+                    project["transcripts"]["sequences"]["sequence_dot"].append(dot)
+
+                if run1:
                     project["transcripts"]["sequences"][
                         "optimized_sequence_figure"
-                    ].append(figure)
-                    project["transcripts"]["sequences"][
-                        "optimized_sequence_dot"
-                    ].append(dot)
+                    ] = []
+                    project["transcripts"]["sequences"]["optimized_sequence_dot"] = []
+
+                    for tn in range(
+                        0, len(project["transcripts"]["sequences"]["vector_sequence"])
+                    ):
+                        figure, dot = predict_structure(
+                            dna_to_rna(
+                                project["transcripts"]["sequences"]["vector_sequence"][
+                                    tn
+                                ],
+                                enrichment=False,
+                            ),
+                            anty_sequence="",
+                            height=None,
+                            width=None,
+                            dis_alpha=0.1,
+                            seq_force=27,
+                            pair_force=3,
+                            show_plot=show_plot,
+                        )
+
+                        project["transcripts"]["sequences"][
+                            "optimized_sequence_figure"
+                        ].append(figure)
+                        project["transcripts"]["sequences"][
+                            "optimized_sequence_dot"
+                        ].append(dot)
 
             project = vector_string(
                 project,
@@ -5346,6 +5392,11 @@ def create_mrna_from_dict(metadata, input_dict, show_plot=True, source=_cwd):
             else:
                 transcript_rep = int(input_dict["poly_len"])
 
+            if "predict_mrna" not in input_dict.keys():
+                pmrna = False
+            else:
+                pmrna = bool(input_dict["predict_mrna"])
+
             project = sequence_enrichment_denovo(
                 project,
                 metadata,
@@ -5432,27 +5483,10 @@ def create_mrna_from_dict(metadata, input_dict, show_plot=True, source=_cwd):
                         project, metadata, input_dict["species"]
                     )
 
-        figure, dot = predict_structure(
-            dna_to_rna(
-                project["transcripts"]["sequences"]["sequence"], enrichment=False
-            ),
-            anty_sequence="",
-            height=None,
-            width=None,
-            dis_alpha=0.1,
-            seq_force=27,
-            pair_force=3,
-            show_plot=show_plot,
-        )
-
-        project["transcripts"]["sequences"]["sequence_figure"] = figure
-        project["transcripts"]["sequences"]["sequence_dot"] = dot
-
-        if run1:
+        if pmrna:
             figure, dot = predict_structure(
                 dna_to_rna(
-                    project["transcripts"]["sequences"]["optimized_sequence"],
-                    enrichment=False,
+                    project["transcripts"]["sequences"]["sequence"], enrichment=False
                 ),
                 anty_sequence="",
                 height=None,
@@ -5463,8 +5497,28 @@ def create_mrna_from_dict(metadata, input_dict, show_plot=True, source=_cwd):
                 show_plot=show_plot,
             )
 
-            project["transcripts"]["sequences"]["optimized_sequence_figure"] = figure
-            project["transcripts"]["sequences"]["optimized_sequence_dot"] = dot
+            project["transcripts"]["sequences"]["sequence_figure"] = figure
+            project["transcripts"]["sequences"]["sequence_dot"] = dot
+
+            if run1:
+                figure, dot = predict_structure(
+                    dna_to_rna(
+                        project["transcripts"]["sequences"]["optimized_sequence"],
+                        enrichment=False,
+                    ),
+                    anty_sequence="",
+                    height=None,
+                    width=None,
+                    dis_alpha=0.1,
+                    seq_force=27,
+                    pair_force=3,
+                    show_plot=show_plot,
+                )
+
+                project["transcripts"]["sequences"][
+                    "optimized_sequence_figure"
+                ] = figure
+                project["transcripts"]["sequences"]["optimized_sequence_dot"] = dot
 
         return project
 
