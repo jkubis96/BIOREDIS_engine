@@ -1607,9 +1607,10 @@ def seuqence_to_protein(sequence: str, metadata):
 def FindRNAi(
     sequence: str,
     metadata,
-    length: int = 23,
+    length: int = 21,
     n: int = 1500,
     max_repeat_len: int = 3,
+    min_complementary: int = 5,
     max_off: int = 1,
     species: str = "human",
     output=None,
@@ -1635,6 +1636,7 @@ def FindRNAi(
        length (int) - length of searching RNAi sequences. Default: 23
        n (int) - maximal number of selected RNAi. Default: 200
        max_repeat_len (int) - maximal number of repeat the same nucleotide in a row eg. AAA. Default: 3
+       min_complementary (int) - minimal number of nucleotides that are self-complementary inside the RNAi sequence. Default: 5
        max_off (int) - maximal number of patrialy off-targeted genes by predicted RNAi. Default: 1
            *sometimes two genes are such similar that is difficult to create RNAi fully specific to one target eg. Human SMN1 & SMN2 genes
        species (str) - specie for which the gene sequence is searching (human / mouse / rat / both* / both2* / multi* ). Default: 'human'
@@ -1733,7 +1735,7 @@ def FindRNAi(
 
             return score, sequence
 
-        def find_self_complementarity(sequence, min_length=3):
+        def find_self_complementarity(sequence, min_length=5):
             complement = {"A": "T", "T": "A", "C": "G", "G": "C"}
             self_complementary_regions = []
 
@@ -2022,7 +2024,11 @@ def FindRNAi(
                     df["specificity"][i] = 1
 
                 df["complemenatry_regions"][i] = list(
-                    set(find_self_complementarity(df["RNAi_seq"][i], min_length=3))
+                    set(
+                        find_self_complementarity(
+                            df["RNAi_seq"][i], min_length=min_complementary
+                        )
+                    )
                 )
                 amount = 0
                 for l in df["complemenatry_regions"][i]:
@@ -2187,7 +2193,7 @@ def loop_complementary_adjustment(
 
 
 def remove_specific_to_sequence(
-    RNAi_data: pd.DataFrame, sequences, min_length: int = 10
+    RNAi_data: pd.DataFrame, sequences, min_length: int = 4
 ):
     """
     This function takes output DataFrame from Find RNAi() or loop_complementary_adjustment() reducing the RNAi score on their complementarity to the provided external genetic sequence. eg sequence after codon optimization which is not included in NCBI ref_seq db.
@@ -2607,6 +2613,9 @@ def load_metadata(
         capacity = os.path.join(source, "data/vector_capacity.xlsx")
         capacity = pd.read_excel(capacity)
 
+        cds_rm = os.path.join(source, "data/check_list_mrna.xlsx")
+        cds_rm = pd.read_excel(cds_rm)
+
         if linkers == True:
             linkers = os.path.join(source, "data/linkers.xlsx")
             linkers = pd.read_excel(linkers)
@@ -2682,6 +2691,7 @@ def load_metadata(
             "capacity": capacity,
             "backbone": backbone,
             "restriction": restriction,
+            "motifs": cds_rm,
         }
 
         print("\nMetadata has loaded successfully")
@@ -2692,7 +2702,7 @@ def load_metadata(
         return None
 
 
-def codon_otymization(
+def codon_optimization(
     sequence: str,
     metadata: dict,
     species: str = "human",
@@ -2720,6 +2730,7 @@ def codon_otymization(
             species = "human"
 
         codons = metadata["codons"]
+        motifs_to_rm = list(set(metadata["motifs"]["Sequence"]))
 
         codons = codons[codons["Species"] == species.lower()]
         seq_codon = [sequence[y : y + 3].upper() for y in range(0, len(sequence), 3)]
@@ -2836,6 +2847,13 @@ def codon_otymization(
                     if (start, end) not in skip_list:
                         results.append({"motif": nc, "start": start, "end": end})
 
+            for motif in motifs_to_rm:
+                for match in re.finditer(motif, temporary_seq):
+                    start = match.start()
+                    end = match.end() - 1
+                    if (start, end) not in skip_list:
+                        results.append({"motif": motif, "start": start, "end": end})
+
             tmp_motif = pd.DataFrame(results)
 
             if len(tmp_motif.index) == 0:
@@ -2900,6 +2918,11 @@ def codon_otymization(
                     ):
                         overlapping_df["new_triplets"][o] = aa_df.loc[0, "Triplet"]
                         overlapping_df["new_fraction"][o] = aa_df.loc[0, "Fraction"]
+                    elif len(aa_df) > 1 and aa_df.loc[1, "Triplet"] != str(
+                        overlapping_df.loc[o, "triplets"]
+                    ):
+                        overlapping_df["new_triplets"][o] = aa_df.loc[1, "Triplet"]
+                        overlapping_df["new_fraction"][o] = aa_df.loc[1, "Fraction"]
                     else:
                         overlapping_df["new_triplets"][o] = None
                         overlapping_df["new_fraction"][o] = None
@@ -2912,6 +2935,17 @@ def codon_otymization(
                 overlapping_df = overlapping_df.sort_values(
                     ["diff"], ascending=[True]
                 ).reset_index(drop=True)
+
+                if (
+                    len(overlapping_df["triplets"]) > 1
+                    and len(set(overlapping_df["triplets"])) == 1
+                ):
+
+                    ixn_c = (len(overlapping_df["triplets"]) - 1) // 2
+
+                    overlapping_df = overlapping_df.iloc[
+                        ixn_c : ixn_c + 1, :
+                    ].reset_index(drop=True)
 
                 if len(overlapping_df.index) > 0:
                     temporary_seq = list(temporary_seq)
@@ -2954,7 +2988,10 @@ def codon_otymization(
             "sequence_aa": [],
             "frequence": [],
             "GC%": [],
+            "dot": [],
+            "MFE": [],
         }
+
         df_final["status"].append("not_optimized")
         df_final["status"].append("optimized")
         df_final["sequence_na"].append("".join(seq_codon))
@@ -2965,6 +3002,13 @@ def codon_otymization(
         df_final["frequence"].append(seq_codon_fr2)
         df_final["GC%"].append(seq_codon_GC)
         df_final["GC%"].append(seq_tmp_GC_2)
+        s, mfe = RNA.fold("".join(seq_codon))
+        df_final["dot"].append(s)
+        df_final["MFE"].append(mfe)
+        del s, mfe
+        s, mfe = RNA.fold("".join(list(df[0])))
+        df_final["dot"].append(s)
+        df_final["MFE"].append(mfe)
 
         df_final = pd.DataFrame(df_final)
 
@@ -2972,7 +3016,7 @@ def codon_otymization(
 
     except:
         print(
-            "\nSomething went wrong - codon_otymization. Check the input or contact us!"
+            "\nSomething went wrong - codon_optimization. Check the input or contact us!"
         )
         return None
 

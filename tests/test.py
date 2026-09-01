@@ -171,7 +171,7 @@ def test_rnai_pipeline():
     res = st.FindRNAi(
         seq,
         metadata,
-        length=23,
+        length=21,
         n=200,
         max_repeat_len=3,
         max_off=1,
@@ -224,7 +224,7 @@ def test_codon_optimization(species):
           """
     seq = st.clear_sequence(seq)
     metadata = st.load_metadata(linkers=False)
-    res = st.codon_otymization(seq, metadata, species=species)
+    res = st.codon_optimization(seq, metadata, species=species)
     assert len(res.index) > 0
 
 
@@ -343,7 +343,7 @@ def test_vector_rnai():
         "promoter_ncrna_sequence": "GAGGGCCTATTTCCCATGATTCCTTCATATTTGCATATACGATACAAGGCTGTTAGAGAGATAATTGGAATTAATTTGACTGTAAACACAAAGATATTAGTACAAAATACGTGACGTAGAAAGTAATAATTTCTTGGGTAGTTTGCAGTTTTAAAATTATGTTTTAAAATGGACTATCATATGCTTACCGTAACTTGAAAGTATTTCGATTTCTTGGCTTTATATATCTTGTGGAAAGGACGAAACACC",
         "rnai_sequence": "",
         "rnai_gene_name": "PAX3",
-        "rnai_length": 20,
+        "rnai_length": 21,
         "overhang_3_prime": "UU",
         "loop_sequence": "TAGTGAAGCCACAGATGTAC",
         "sequences": [
@@ -394,7 +394,7 @@ def test_vector_transcription_rnai():
         "vector_function": "rnai",
         "species": "human",
         "rnai_sequence": "",
-        "rnai_length": 20,
+        "rnai_length": 21,
         "overhang_3_prime": "UU",
         "rnai_gene_name": "KIT",
         "loop_sequence": "TAGTGAAGCCACAGATGTAC",
@@ -498,7 +498,7 @@ def test_vector_denovo_rnai():
         "species": "human",
         "rnai_type": "sh",
         "rnai_sequence": "",
-        "rnai_length": 20,
+        "rnai_length": 21,
         "overhang_3_prime": "UU",
         "rnai_gene_name": "KIT",
         "loop_sequence": "TAGTGAAGCCACAGATGTAC",

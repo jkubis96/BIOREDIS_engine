@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-VERSION = '2.1.4.post1' 
-DESCRIPTION = 'jbioseqtools'
+VERSION = '2.2.2' 
+DESCRIPTION = 'bioredis_engine'
 LONG_DESCRIPTION = Path("README.md").read_text(encoding="utf-8")
 
 # Setting up
 setup(
-        name="jbioseqtools", 
+        name="bioredis_engine", 
         version=VERSION,
         author="Jakub Kubis",
         author_email="jbiosystem@gmail.com",

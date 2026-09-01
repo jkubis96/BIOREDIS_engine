@@ -100,6 +100,7 @@ def rnai_selection_to_vector(
             length=length,
             n=1500,
             max_repeat_len=3,
+            min_complementary=5,
             species=species,
             output=None,
             database_name="refseq_select_rna",
@@ -560,7 +561,7 @@ def sequence_enrichment(
 
         if run == True:
             for tn in range(0, len(project["transcripts"]["sequences"]["sequence"])):
-                tmp = codon_otymization(
+                tmp = codon_optimization(
                     project["transcripts"]["sequences"]["vector_sequence"][tn],
                     metadata,
                     species,
@@ -648,7 +649,7 @@ def sequence_enrichment_denovo(
             species = "human"
 
         if run == True:
-            tmp = codon_otymization(
+            tmp = codon_optimization(
                 project["transcripts"]["sequences"]["sequence"],
                 metadata,
                 species,
@@ -757,7 +758,7 @@ def sequence_enrichment_alternative(
                 for tn in range(
                     0, len(project["transcripts"]["alternative"][f"var{n}"]["sequence"])
                 ):
-                    tmp = codon_otymization(
+                    tmp = codon_optimization(
                         project["transcripts"]["alternative"][f"var{n}"]["sequence"][
                             tn
                         ],
@@ -817,7 +818,7 @@ def sequence_enrichment_alternative_denovo(
                 "sequence_name"
             ]
 
-            tmp = codon_otymization(
+            tmp = codon_optimization(
                 project["transcripts"]["alternative"][f"var{n}"]["sequence"],
                 metadata,
                 species,
@@ -2761,7 +2762,7 @@ def create_vector_from_dict_transcription(
                         # tutaj-len
 
                         if "rnai_length" not in input_dict.keys():
-                            rnai_length = 23
+                            rnai_length = 21
                         else:
                             rnai_length = int(input_dict["rnai_length"])
 
@@ -3545,7 +3546,7 @@ def create_vector_from_dict_rnai(metadata, input_dict, show_plot=True, source=_c
                         print("\nThe consensus sequence was also unable to be created!")
 
                     if "rnai_length" not in input_dict.keys():
-                        rnai_length = 23
+                        rnai_length = 21
                     else:
                         rnai_length = int(input_dict["rnai_length"])
 
