@@ -917,14 +917,14 @@ test = ["ipykernel", "nbformat", "nose (>=0.10.1)", "numpy (>=1.17)", "pygments"
 
 [[package]]
 name = "jbioseqtools"
-version = "2.2.1"
+version = "2.2.2"
 description = "jbioseqtools"
 optional = false
 python-versions = "<3.11,>=3.8"
 groups = ["main"]
 files = [
-    {file = "jbioseqtools-2.2.1-py3-none-any.whl", hash = "sha256:fb52d7dd425834c86dd20a24ab9a2a5c35ca6a2b71a7f8179f25d357b74ce8a6"},
-    {file = "jbioseqtools-2.2.1.tar.gz", hash = "sha256:4682700ce877a3a888da85c105566337d3431f4565764517d4dd62fadc5b3019"},
+    {file = "jbioseqtools-2.2.2-py3-none-any.whl", hash = "sha256:d63d11a35ef931c6a9a7740f8af66dabe84b542fc8b6dfbc1cbd5019c8d3c136"},
+    {file = "jbioseqtools-2.2.2.tar.gz", hash = "sha256:b5a9ea17d2d320bdad26dba991ee9f5d41f1bf97cd44e80097705f7af5db36d5"},
 ]
 
 [package.dependencies]
@@ -2821,4 +2821,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.8,<3.11"
-content-hash = "55b7b33de73d089da170354c18c0ffbb30f155edd47eeffb1f4c4227c90d9f94"
+content-hash = "6d7211aef6a6d2790463d96b78e0e2135d1e12b4044343dc8f4425b539f8a41f"
